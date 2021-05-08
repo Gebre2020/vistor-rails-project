@@ -4,7 +4,7 @@ class TravelsController < ApplicationController
   end
 
   def show
-    @travel = Travel.find(params[:id])
+    @travel = Travel.find_by_id(params[:id])
   end
 
   def new
@@ -22,17 +22,24 @@ class TravelsController < ApplicationController
   end
 
   def edit
-    @travel = Travel.find(params[:id])
+    @travel = Travel.find_by_id(params[:id])
   end
 
   def update
-    @travel = Travel.find(params[:id])
+    @travel = Travel.find_by_id(params[:id])
 
     if @travel.update(travel_params)
       redirect_to @travel
     else
       render :edit
     end
+  end
+
+  def destroy
+    @travel = Travel.find_by_id(params[:id])
+    @travel.destroy
+
+    redirect_to root_path
   end
 
   private
