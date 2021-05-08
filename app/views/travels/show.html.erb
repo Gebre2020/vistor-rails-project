@@ -3,3 +3,8 @@
 <h1><%= @travel.city %></h1>
 
 <p><%= @travel.country %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_travel_path(@travel) %></li>
+  <li><%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
+</ul>
