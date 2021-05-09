@@ -11,6 +11,26 @@
   </head>
 
   <body>
+  <br>
+  <div>
+    <% if logged_in? %>
+      <%= link_to "Add a New Travel", new_travel_path %> |
+      <%= link_to "All Travels", travels_path %> |
+     
+      <%= button_to "Logout", logout_path, method:"delete" %>
+    <% else %>
+      New User? <%= link_to "Sign Up", signup_path %> |
+      <%= link_to "Log In", login_path %>
+    <% end %>   
+  </div>
+
+  <div>
+    <% if flash[:message] %>
+      <%= flash[:message] %>
+    <% end %>
+    <%= @error %>
+  </div>
+
     <%= yield %>
   </body>
 </html>
