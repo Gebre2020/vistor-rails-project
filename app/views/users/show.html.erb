@@ -1,0 +1,10 @@
+<h1>Users#show</h1>
+
+<h1>Welcome  <%= @user.username %></h1>
+<h4> "Logged in successfully" </h4>
+
+<%= form_tag("/logout", method:'delete' ) do %>
+  <%= submit_tag "Logout" %>
+<% end %>  
+<br>
+<%= link_to "Logout", logout_path, method: 'delete' %>
