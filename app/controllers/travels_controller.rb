@@ -1,4 +1,6 @@
 class TravelsController < ApplicationController
+  before_action :redirect_if_not_logged_in
+ 
   def index
     @travels = Travel.all
   end
@@ -12,10 +14,9 @@ class TravelsController < ApplicationController
   end
 
   def create
-    @travel = Travel.new(travel_params)
-
+    @travel = current_user.travels.build(travel_params)
     if @travel.save
-      redirect_to @travel
+      redirect_to travels_path
     else
       render :new
     end
