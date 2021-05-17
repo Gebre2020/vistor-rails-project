@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true
+  accepts_nested_attributes_for :locations
 end
