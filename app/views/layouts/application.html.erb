@@ -14,9 +14,9 @@
   <br>
   <div>
     <% if logged_in? %>
-      <%= link_to "Add a New Travel", new_travel_path %> |
-      <%= link_to "All Travels", travels_path %> |
-     
+      <%= link_to "All Location", locations_path %> |
+      <%= link_to "Add a New Location", new_location_path %> |
+      <%= link_to "Add a New travel", new_travel_path %> |
       <%= button_to "Logout", logout_path, method:"delete" %>
     <% else %>
       New User? <%= link_to "Sign Up", signup_path %> |
