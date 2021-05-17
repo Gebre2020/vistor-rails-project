@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_011921) do
+ActiveRecord::Schema.define(version: 2021_05_14_055236) do
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
+    t.string "city"
+    t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "travels", force: :cascade do |t|
-    t.string "city"
-    t.string "country"
+    t.string "name"
+    t.string "address"
     t.integer "user_id"
     t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2021_05_08_011921) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
 end
