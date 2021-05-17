@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  
+  def new  # render a signup form
+    if !logged_in?
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
-  def create 
-    @user = User.new(user_params)
+  def create  # processing sign up form
+    user = User.new(user_params)
     if @user.save
         session[:user_id] = @user.id
+        # flash[:success] = "Welcome to the Travel App!"
         redirect_to @user
     else
         render :new
