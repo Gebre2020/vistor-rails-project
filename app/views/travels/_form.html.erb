@@ -1,21 +1,42 @@
-<%= form_with model: travel do |form| %>
-  <div>
-    <%= form.label :city %><br>
-    <%= form.text_field :city %>
-     <% travel.errors.full_messages_for(:city).each do |message| %>
-      <div><%= message %></div>
+
+<%= form_for([@location, @travel]) do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <% if @location %>
+    <%= f.hidden_field :location_id, value: @location.id %>
+  <% else %>
+    <h4>Create a Location:</h4>
+    <%= f.fields_for :location do |l| %>
+      <%= l.label :city %>
+      <%= l.text_field :city %>
+
+      <%= l.label :country %>
+      <%= l.text_field :country %>
     <% end %>
-  </div>
-  <br>
-  <div>
-    <%= form.label :country %><br>
-    <%= form.text_field :country %>
-     <% travel.errors.full_messages_for(:country).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <br>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  <% end %>  
+       
+
+  <%= f.submit %>
+<% end %> 
+
+
+<!--
+ <%= form_with(model: [@location, @travel], local: true) do |f| %>
+
+   <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+   </p>
+   <p>
+    <%= f.submit %>
+   </p>
+   <% end %>
+   -->
