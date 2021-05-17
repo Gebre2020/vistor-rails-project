@@ -1,10 +1,7 @@
 <h1>Travel Show Page</h1><br>
 
-<h1><%= @travel.city %></h1>
+<%= render partial: "travel", locals: {travel: @travel} %>
 
-<p><%= @travel.country %></p>
+<%= button_to "Delete", [@travel.location, @travel], method: :delete, data: { confirm: "Are you sure?" } %>
 
-<ul>
-  <li><%= link_to "Edit", edit_travel_path(@travel) %></li>
-  <li><%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
-</ul>
+
