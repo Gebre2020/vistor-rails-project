@@ -1,16 +1,23 @@
-<h1>Travels#index</h1>
-<p>Find me in app/views/travels/index.html.erb</p>
-
-
-<h1>Travels</h1>
-
-<ul>
-  <% @travels.each do |travel| %>
-    <li>
-      <%= link_to travel.city, travel %>
-      <%= link_to travel.country, travel %>
-    </li>
+<h1>All Travels#index</h1>
+<br>
+<h1 style="text-align: center; color: green;">
+  <% if @location %>
+     <%= @location.city %>
+      <%= @location.country %>'s Travel to Visit</h2>
+  <% else %>
+    All Travels
   <% end %>
-</ul>
+</h1>  
 
-<%= link_to "New Travel", new_travel_path %>
+
+ <%= render partial: "travel", collection: @travels, as: :travel %> 
+<br>
+
+
+<% if @location %>
+    <%= link_to " Add New Location Travel", new_location_travel_path %>
+<% else %>
+    <%= link_to "New Travel", new_travel_path %>
+<% end %>
+
+           
