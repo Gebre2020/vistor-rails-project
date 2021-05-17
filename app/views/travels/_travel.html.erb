@@ -1,0 +1,12 @@
+
+<p>Name: <%= @travel.name %>
+Address: <%= @travel.address %>
+<br>
+<% if @travel.location %> 
+  <strong>Location City: </strong><br>
+  <p><%= travel.location.city %></p>
+  <strong>Country: </strong>
+  <p><%= travel.location.country %></p>
+<% end %>
+</p>
+
