@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
-    # include AplicationHelper
-
+    # include ApplicationHelper
+    
+    helper_method :current_user
+    helper_method :logged_in?
+    
+    # def welcome 
+    #   if !logged_in?
+    #       redirect_to login_path
+    #   end 
+    # end 
   
     # gives access to methods in the views
     # before_action :authorized
-    helper_method :current_user
-    helper_method :logged_in?
 
     private
 
@@ -21,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
   
     def redirect_if_not_logged_in
-      redirect_to '/' if !logged_in?
+      redirect_to login_path if !logged_in?
      # redirect_to sign_in_path, alert: "You must be signed in to do that." if current_user.nil?
     end
   
