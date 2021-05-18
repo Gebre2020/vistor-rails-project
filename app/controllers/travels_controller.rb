@@ -1,7 +1,7 @@
 class TravelsController < ApplicationController
   
   before_action :redirect_if_not_logged_in
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  #before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -22,7 +22,7 @@ class TravelsController < ApplicationController
   def new
     if params[:location_id] 
       @location = Location.find_by(id: params[:location_id])
-      @travel = @location.travels.build
+      @travel = @location.travels.build(location_id: @location.id)
       #@travel = @travel.new(location_id: @location.id)
     else
       @travel = Travel.new
@@ -34,17 +34,17 @@ class TravelsController < ApplicationController
     if params[:location_id]
       @location = Location.find_by(id: params[:location_id])
       @travel = @location.travels.build(travel_params)
-      redirect_to location_path(@location)
+      #redirect_to location_path(@location)
     else
       @travel = Travel.new(travel_params)
     end
 
-    # if  @travel.save
-    #   #redirect_to travel_path(@travel)
-    #   redirect_to @location
-    # else
-    #   render :new
-    # end
+    if  @travel.save
+      #redirect_to location_travels_path(@travel.location)
+      redirect_to location_travels_path
+    else
+      render :new
+    end
   end
   
   def show
@@ -62,7 +62,7 @@ class TravelsController < ApplicationController
 
     if @travel.update(travel_params)
       redirect_to travel_path(@travel)
-      redirect_to location_path
+      #redirect_to location_path(@travel)
     else
       render :edit
     end
@@ -71,17 +71,17 @@ class TravelsController < ApplicationController
   def destroy
    # @travel = Travel.find_by_id(params[:id])
     @travel.destroy
-    redirect_to location_path
+    redirect_to travels_path
   end
 
   private
     def travel_params
-      params.require(:travel).permit(:name, :address, location_attributes:[:city, :country])
+      params.require(:travel).permit(:name, :address, :location_id)
     end
 
-    def set_location
-      @location = Location.find_by_id(params[:location_id])    
-    end
+    # def set_location
+    #   @location = Location.find_by_id(params[:location_id])    
+    # end
 
     def set_travel
       @travel = Travel.find_by_id(params[:id])
