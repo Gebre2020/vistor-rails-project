@@ -3,8 +3,10 @@
 
 <% if @location %> 
     <%= render partial: "location", locals: {location: @location} %>
-    <li><%= link_to 'See all locations travels', location_travels_path(@location) %> 
-    <%= link_to 'Edit', edit_location_path(@location) %>
+    <li><%= link_to 'See all locations travels', location_travels_path(@location) %> |
+    
+    <%= link_to 'Edit', edit_location_path(@location) %> |
+    <%= link_to 'Back', locations_path %>
 <% else %>
     <h2>404</h2><h3>Not Found</h3>
 <% end %>
