@@ -5,15 +5,13 @@
      <%= @location.city %>
       <%= @location.country %>'s Travel to Visit</h2>
   <% else %>
-    All Travels
+    <h1>All Travels</h1>
   <% end %>
 </h1>  
 
-
- <%= render partial: "travel", collection: @travels, as: :travel %> 
+ <%= render partial: "travel", collection: @travels, as: :t %> 
 <br>
-
-
+<br>
 <% if @location %>
     <%= link_to " Add New Location Travel", new_location_travel_path %>
 <% else %>
