@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # end
   # resources :travels
   resources :travels, only: [:index, :new, :create] # anything non-nested
-
+  
   resources :locations do  # 7 restful routes
     resources :travels  #, shallow: true #7 restful routes for nested resources
   end
