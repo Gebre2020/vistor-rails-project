@@ -1,12 +1,9 @@
 
-<p>Name: <%= @travel.name %>
-Address: <%= @travel.address %>
+<strong>Name: </strong><%= t.name %>
+<strong>Address: </strong><%= t.address %>  <br>
 <br>
-<% if @travel.location %> 
-  <strong>Location City: </strong><br>
-  <p><%= travel.location.city %></p>
-  <strong>Country: </strong>
-  <p><%= travel.location.country %></p>
+<% if t.location %> 
+  <strong>Location City: </strong> - <%= t.location.city %> 
+  <strong>Country: </strong> - <%= t.location.country %> |
 <% end %>
-</p>
 
