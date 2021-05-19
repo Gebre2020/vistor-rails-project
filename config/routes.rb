@@ -12,7 +12,7 @@ Rails.application.routes.draw do
  
    # logout route
    delete '/logout' => 'sessions#destroy'
-   get '/auth/:provider/callback', to: 'sessions#omniauth'
+   get '/auth/:provider/callback' => 'sessions#omniauth'
   
    resources :users, only: [:new, :create]
    
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :travels, only: [:index, :new, :create] # anything non-nested
   
   resources :locations do  # 7 restful routes
-    resources :travels  #, shallow: true #7 restful routes for nested resources
+    resources :travels, shallow: true   #7 restful routes for nested resources
   end
 
 
