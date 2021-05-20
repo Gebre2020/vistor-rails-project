@@ -4,13 +4,15 @@ class LocationsController < ApplicationController
     # before_action :authenticate_user!,except: [:index, :show] 
 
     def index
-        # if params[:user_id] && @user = User.find_by_id(params[:user_id])
-        #     # nested
-        #     @locations = @user.locations
-        # else
-        #     @error = "The user doesn't exist" if params[:user_id]
-            @locations = Location.all
-        # end
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            # nested
+            @locations = @user.locations.baller_travels
+            @travels = Travel.latest_travels
+        else
+            @error = "The user doesn't exist" if params[:user_id]
+            @locations = Location.baller_travels
+            @travels = Travel.latest_travels
+         end
     end
 
     def new
@@ -36,11 +38,15 @@ class LocationsController < ApplicationController
     end
 
     def show
-        @location = Location.find_by(id: params[:id])
-        redirect_to locations_path if !@location
+    #  @location = Location.find_by(id: params[:id])
+    #   if @location
+    #     redirect_to location_path
+    #   else
+     redirect_to locations_path if !@location
     #    @travel = Travel.new
     #     @travel = @location.travels
-     end
+    #  end
+    end
 
     def edit
        # @location = Location.find_by_id(params[:id])
@@ -67,6 +73,6 @@ class LocationsController < ApplicationController
     end
 
     def set_location
-        @location = Location.find_by_id(params[:id])
+        @location = Location.find_by(id: params[:id])
       end 
 end
