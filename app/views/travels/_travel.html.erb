@@ -1,9 +1,9 @@
-
-<strong>Name: </strong><%= t.name %>
-<strong>Address: </strong><%= t.address %>  <br>
-<br>
-<% if t.location %> 
-  <strong>Location City: </strong> - <%= t.location.city %> 
-  <strong>Country: </strong> - <%= t.location.country %> |
-<% end %>
+<p>
+  <strong>Name: </strong><%= t.name %>
+  <strong>Address: </strong><%= t.address %> 
+  <% if t.location %> 
+    <strong>Location City: </strong> - <%= t.location.city %> 
+    <strong>Country: </strong> - <%= t.location.country %> |
+  <% end %>
+</p>
 
