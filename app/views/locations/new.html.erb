@@ -1,24 +1,14 @@
+
+<h1>New location</h1>
+
 <% if @location %>
   <h1> New Location for <%=@location.city%>!</h1>
 <% else %>  
   <h1>New Location!</h1>
 <% end %>
 
-<% if @location.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
-    <ul>
-      <% @location.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<h1> New Location </h1>
-
 <%= render partial: "form" %>
+<%= link_to 'Back', locations_path %>
 
 <!--<%= render partial: "form", locals: {location: @location} %>-->
 
