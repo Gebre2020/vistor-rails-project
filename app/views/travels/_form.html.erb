@@ -1,27 +1,33 @@
-
-<%= form_for([@location, @travel]) do |f| %>
-  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-
-  <% if @location %>
-    <%= f.hidden_field :location_id, value: @location.id %>
-  <% else %>
-    <h4>Create a Location:</h4>
-    <%= f.fields_for :location do |l| %>
-      <%= l.label :city %>
-      <%= l.text_field :city %>
-
-      <%= l.label :country %>
-      <%= l.text_field :country %>
+<hr />
+<br />
+<h3> Create a Travel:</h3>
+<%= form_with(model: ([ @location, @travel ]), local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+  </p>
+    <% if @location %> 
+        <%= form.hidden_field :location_id, value: @location.id %>
+    <% else %> 
+      <h3> Create a Location:</h3>
+      <%= form.fields_for :location do |loc| %>
+      <p>
+        <%= loc.label :city %><br>
+        <%= loc.text_field :city %>
+      </p>
+      <p>
+        <%= loc.label :country %><br>
+        <%= loc.text_field :country %>
+      </p>
+      <% end %>
     <% end %>
-  <% end %>  
-       
-  <%= f.submit %>
-<% end %> 
-
-
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+  <hr/>
 
