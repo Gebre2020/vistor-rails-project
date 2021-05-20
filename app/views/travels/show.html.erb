@@ -1,6 +1,6 @@
-<h1>Travels#show</h1><br>
+<h2>Travel To:</h2>
 
-<%= render partial: "travel", locals: {t: @travel} %>
+<%= render partial: "travel", locals: {travel: @travel} %><br>
 
 <%= button_to "Delete", travel_path(@travel), method: 'delete' %>
 
