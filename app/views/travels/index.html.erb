@@ -1,6 +1,5 @@
 <h1>All Travels#index</h1>
 <br>
-
 <h1 style="text-align: left; color: green;">
   <% if @location %>
      <%= @location.city %>
@@ -9,21 +8,11 @@
     <h1>All Travels</h1>
   <% end %>
 </h1>  
-<!--
- <%= render partial: "travel", collection: @travels, as: :t %> 
-<br>
-<br>
-<% if @location %>
-    <%= link_to " Add New Location Travel", new_location_travel_path %>
-<% else %>
-    <%= link_to "New Travel", new_travel_path %>
-<% end %>
--->
 
- <%= render partial: "travel", collection: @travels, as: :t %> 
+<%= render partial: "travel", collection: @travels, as: :travel %> 
 
 <% if @location %>
   <%= link_to "New Location Travel", new_location_travel_path %>
 <% else %>
   <%= link_to "New Travel", new_travel_path %>
-<% end %>  
+<% end %> 
