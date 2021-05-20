@@ -1,38 +1,17 @@
 <h1>Location Show Page</h1><br>
 
-
 <% if @location %> 
+<!--
     <%= render partial: "location", locals: {location: @location} %>
     <li><%= link_to 'See all locations travels', location_travels_path(@location) %> |
-    
-    <%= link_to 'Edit', edit_location_path(@location) %> |
-    <%= link_to 'Back', locations_path %>
-<% else %>
-    <h2>404</h2><h3>Not Found</h3>
-<% end %>
-
-<!--
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-<p>
-  <strong>Country:</strong>
-  <%= @location.country %>
-</p>
-<% if @location.travels.any? %>
-<br>
-<h2>Travels to <%= @location.city %> - <%= @location.country %>:</h2>
-<%= render @location.travels %>
-<% end %>
-
-<hr>
-
-<h2>Add a travel:</h2>
-<%= render 'travels/form', travel: @location.travels.build %>
-<%= render 'travels/travel' %>
-
-<%= link_to 'Edit', edit_location_path(@location) %>
-<%= link_to 'Back', locations_path %>
 -->
+<%= render partial: "location", locals: {location: @location} %>
+<%= link_to 'See all locations travels', location_travels_path(@location) %><br><br>
+<%= link_to 'Add a new locations travel', new_location_travel_path(@location) %>
+
+  
+<% else %>
+  <h2>404</h2><h3>Not Found</h3>
+<% end %>
+
+
