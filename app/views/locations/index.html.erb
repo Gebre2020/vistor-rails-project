@@ -1,21 +1,26 @@
 <br>
-<h1>Locations#index</h1>
+<h1>All Locations</h1>
 <br>
 
 <!-- <%= render partial: "location", collection: @locations %> -->
 
-<div>
+<hr/> 
  
-  <% @locations.each do |loc| %>
-    <p> <%= loc.city %> - <%= loc.country %></p>
-   
-    <% loc.travels.each do |travel| %>  
-      <li><%= travel.name %> - <%= travel.address %></li>
-    <% end %>
-    ----------------------------------------
-  <% end %>
+  <% @locations.each do |location| %>
   
-</div>
+    <p> <%= location.city %> - <%= location.country %></p>
+        <%= link_to 'Show', location_path(location) %>
+        <% location.travels.each do |travel| %>  
+          <li><%= travel.name %> - <%= travel.address %></li>
+        <% end %>
+  <hr/> 
+  <% end %>
+
+  <h1>Latest Travels</h1>
+
+<% @travels.each do |travel| %>  
+    <li><%= travel.name %> - <%= travel.address %></li>
+<% end %>
 
 <%= link_to "New location", new_location_path %>
 
